@@ -7,14 +7,63 @@
   flex-shrink: 0;
   position: static;
   color: #fff;
-  /* margin-top: 20px; */
 }
 
-.mapContainer>div {
+/* .mapContainer>div {
   margin: 20px 20px;
-}
+} */
 
 .btnCont {
   display: flex;
   justify-content: center;
 }
+
+.video-title {
+  display: none;
+}
+
+.camera_card .ant-card {
+  border-radius: 4px !important;
+}
+
+.camera_card .ant-card-head {
+  padding: 0 5px !important;
+  min-height: 37px !important;
+}
+
+.camera_card .ant-card-body {
+  padding: 0 5px;
+  border-radius: 0 0 8px 8px;
+}
+
+.scrollableDiv .ant-list-header {
+  padding: 8px 16px !important;
+}
+
+.ant-layout-header {
+  padding: 16px 50px !important;
+}
+
+.manage_logo img {
+  max-width: 130px;
+  width: 120px;
+}
+
+.manage_logo {
+  width: 140px;
+  overflow: hidden;
+  position: relative;
+  transition: .5s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.demo-logo-vertical {
+  margin-bottom: 2rem;
+  margin-top: 1rem;
+}
+
+/* .scrollableDiv .ant-list-items {
+  padding: 8px 16px !important;
+} */

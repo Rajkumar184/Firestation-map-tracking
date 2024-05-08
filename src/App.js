@@ -1,20 +1,23 @@
 import React, { useState } from 'react';
 import './App.css';
 import WrappedMap from './components/gMap/Map';
-import { UploadOutlined, UserOutlined, VideoCameraOutlined } from '@ant-design/icons';
-import { Layout, Menu, theme } from 'antd';
+import { NotificationOutlined, VideoCameraOutlined } from '@ant-design/icons';
+import { Layout, Menu, theme, Button, Badge } from 'antd';
 import config from './components/gMap/config';
 import useFetch from './hooks/useFetch';
 import Box from '@mui/material/Box';
 import LinearProgress from '@mui/material/LinearProgress';
+import { Card } from 'antd';
+import AlertNotification from './components/Notification/AlertNotification';
+import logo from "./assest/image/small_logo_sidebar.jpeg"
 
 const { Header, Content, Footer, Sider } = Layout;
 
-const items = [UserOutlined, VideoCameraOutlined, UploadOutlined, UserOutlined].map(
+const items = [VideoCameraOutlined].map(
   (icon, index) => ({
     key: String(index + 1),
     icon: React.createElement(icon),
-    label: `nav ${index + 1}`,
+    label: `Fire station ${index + 1}`,
   }),
 );
 
@@ -41,14 +44,37 @@ function App() {
           left: 0
         }}
       >
-        <div className="demo-logo-vertical" />
+        <div className="demo-logo-vertical">
+          <div className="manage_logo">
+            <img
+              className="nav_logo-icon"
+              src={logo}
+              alt="Nextyn Logo"
+            />
+          </div>
+        </div>
         <Menu theme="dark" mode="inline" defaultSelectedKeys={['4']} items={items} />
       </Sider>
       <Layout>
-        <Header style={{ padding: 0, background: colorBgContainer }} />
-        <Content style={{ margin: '24px 16px 0' }}>
+        <Header style={{ background: colorBgContainer }}>
+          {/* Left Content or Logo can go here */}
+          <div className='d-flex justify-content-end align-items-center'>
+            <Button className='text-end me-4' type="primary" onClick={() => console.log('Add Fire Station Clicked')}>
+              Add Fire Station
+            </Button>
+            <Badge dot>
+              <NotificationOutlined
+                style={{
+                  fontSize: 16,
+                }}
+              />
+            </Badge>
+          </div>
+
+        </Header>
+        <Content style={{ margin: '10px 16px 0' }}>
           <div className='row'>
-            <div className='col-md-8'>
+            <div className='col-md-6'>
               {paths && stops ?
                 <WrappedMap
                   paths={paths}
@@ -64,11 +90,73 @@ function App() {
                 </Box>
               }
             </div>
-            <div className='col-md-4'></div>
+            <div className='col-md-6 camera_card'>
+              <div className='row'>
+                <div className='col-md-4'>
+                  <Card
+                    title="Cam 1"
+                    bordered={false}
+                  // style={{
+                  //   width: 300,
+                  // }}
+                  >
+                    <iframe
+                      src="https://www.youtube.com/embed/zLjRG-eq3vI?autoplay=1&controls=0&mute=1&modestbranding=1"
+                      frameBorder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                      title="Video 1"
+                      style={{ width: '100%', height: '100%' }}
+                    ></iframe>
+                  </Card>
+
+                </div>
+                <div className='col-md-4'>
+                  <Card
+                    title="Cam 2  "
+                    bordered={false}
+                  // style={{
+                  //   width: 300,
+                  // }}
+                  >
+                    <iframe
+                      src="https://www.youtube.com/embed/zLjRG-eq3vI?autoplay=1&controls=0&mute=1&modestbranding=1"
+                      frameBorder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                      title="Video 1"
+                      style={{ width: '100%', height: '100%' }}
+                    ></iframe>
+                  </Card>
+                </div>
+                <div className='col-md-4'>
+                  <Card
+                    title="Cam 3"
+                    bordered={false}
+                  // style={{
+                  //   width: 300,
+                  // }}
+                  >
+                    <iframe
+                      src="https://www.youtube.com/embed/zLjRG-eq3vI?autoplay=1&controls=0&mute=1&modestbranding=1"
+                      frameBorder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                      title="Video 1"
+                      style={{ width: '100%', height: '100%' }}
+                    ></iframe>
+                  </Card>
+                </div>
+              </div>
+
+              <div className='mt-3'>
+                <AlertNotification />
+              </div>
+            </div>
+
           </div>
-
-
         </Content>
+
       </Layout>
     </Layout>
 
